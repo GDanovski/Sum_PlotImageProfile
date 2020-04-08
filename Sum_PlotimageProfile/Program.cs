@@ -65,8 +65,9 @@ namespace Sum_PlotimageProfile
             }
 
             output[0] = string.Join("\t", cur);
-            
-            
+            double val;
+
+
 
             for (row = 0; row < MaxRows; row++)
             {
@@ -77,9 +78,12 @@ namespace Sum_PlotimageProfile
                 cur.Clear();
 
                 for (column = 0; column < inputFiles.ElementAt(0).Value.GetColumns; column++)
-                {  
+                {
                     foreach (var kvp in inputFiles)
-                        cur.Add(kvp.Value.GetValue(column, row).ToString());
+                    {
+                        val = kvp.Value.GetValue(column, row);
+                        cur.Add(val != 0 ? val.ToString() : "");
+                    }
 
                     string Avg = GetExcelCommand("AVERAGE", first, last, row);
                     string StDev = GetExcelCommand("STDEV.S", first, last, row);
@@ -92,7 +96,7 @@ namespace Sum_PlotimageProfile
 
                 }
 
-                output[row+1] = string.Join("\t", cur);
+                output[row + 1] = string.Join("\t", cur);
             }
 
             return output;
