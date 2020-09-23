@@ -145,7 +145,7 @@ namespace Sum_PlotimageProfile
 
                 cur.Clear();
                 cur.Add(row.ToString());
-
+                int counter = 0;
                 for (column = 0; column < inputFiles.ElementAt(0).Value.GetColumns; column++)
                 {
                     foreach (var kvp in inputFiles)
@@ -156,8 +156,16 @@ namespace Sum_PlotimageProfile
 
                     string Avg = GetExcelCommand("AVERAGE", first, last, row);
                     string StDev = GetExcelCommand("STDEV.S", first, last, row);
-                    if(addToExcell)
+                    if (addToExcell)
+                    {
                         ChartRange += ",$" + GetColumnName(last + 1) + ":$" + GetColumnName(last + 1);
+                        counter++;
+                        if(counter == 20)
+                        {
+                            counter = 0;
+                            ChartRange += " _\n";
+                        }
+                    }
                     first += totalLength;
                     last += totalLength;
 
