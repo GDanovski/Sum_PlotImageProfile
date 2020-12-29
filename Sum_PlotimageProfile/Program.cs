@@ -9,6 +9,7 @@ namespace Sum_PlotimageProfile
 {
     class Program
     {
+        const int imgLength = 360;  // The number of image frames
         static void Main(string[] args)
         {
             string dir;
@@ -66,7 +67,7 @@ namespace Sum_PlotimageProfile
             List<string> cur = new List<string>();
             cur.Add("Index");
 
-            for (column = 0; column < inputFiles.ElementAt(0).Value.GetColumns; column++)
+            for (column = 0; column <imgLength /*inputFiles.ElementAt(0).Value.GetColumns*/; column++)
             {
                 foreach (var kvp in inputFiles)
                     cur.Add(kvp.Value.GetTitle(column) + "_" + kvp.Value.FileName);
@@ -88,7 +89,7 @@ namespace Sum_PlotimageProfile
                 cur.Clear();
                 cur.Add(row.ToString());
 
-                for (column = 0; column < inputFiles.ElementAt(0).Value.GetColumns; column++)
+                for (column = 0; column <imgLength /*inputFiles.ElementAt(0).Value.GetColumns*/; column++)
                 {
                     foreach (var kvp in inputFiles)
                     {
@@ -124,7 +125,7 @@ namespace Sum_PlotimageProfile
             int column, row;
             List<string> cur = new List<string>();
             cur.Add("Index");
-            for (column = 0; column < inputFiles.ElementAt(0).Value.GetColumns; column++)
+            for (column = 0; column < imgLength/*inputFiles.ElementAt(0).Value.GetColumns*/; column++)
             {
                 foreach (var kvp in inputFiles)
                     cur.Add(kvp.Value.GetTitle(column) + "_" + kvp.Value.FileName);
@@ -146,7 +147,7 @@ namespace Sum_PlotimageProfile
                 cur.Clear();
                 cur.Add(row.ToString());
                 int counter = 0;
-                for (column = 0; column < inputFiles.ElementAt(0).Value.GetColumns; column++)
+                for (column = 0; column < imgLength/*inputFiles.ElementAt(0).Value.GetColumns*/; column++)
                 {
                     foreach (var kvp in inputFiles)
                     {
